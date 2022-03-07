@@ -1,0 +1,27 @@
+
+<div xmlns:th="http://www.thymeleaf.org">
+
+    <head th:fragment="head(title)">
+        <link rel="icon" th:href="@{/images/frida.ico}" type="image/x-icon">
+        <title th:text="${title}"></title>
+        <link rel="stylesheet" th:href="@{/css/frida.css}">
+    </head>
+
+    <nav th:fragment="menu">
+        <ul>
+            <li><a th:href="@{/}">Welkom</a></li>
+            <li><a th:href="@{/sauzen}">Sauzen</a></li>
+            <li><a th:href="@{/taal}">Taal</a></li>
+        </ul>
+    </nav>
+
+    <table th:fragment="sauzenTabel(sauzen)" xmlns:th="http://www.thymeleaf.org"  id="sauzentabel">
+        <tbody>
+        <tr th:each="saus : ${alleSauzen}" th:object="${saus}">
+            <td><a th:text="*{naam}" th:href="@{/sauzen/{id}(id = *{id})}"></a></td>
+<!--                <td th:each="ingredient : *{ingredienten}" th:text="${ingredient}"></td>-->
+        </tr>
+        </tbody>
+    </table>
+
+</div>
