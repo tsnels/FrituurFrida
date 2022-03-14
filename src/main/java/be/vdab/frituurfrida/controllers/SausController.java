@@ -3,7 +3,6 @@ package be.vdab.frituurfrida.controllers;
 
 import be.vdab.frituurfrida.services.SausService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,7 +38,7 @@ class SausController {
 
     @GetMapping("alfabet/{letter}")
     public ModelAndView findByBeginNaam(@PathVariable char letter) {
-        return new ModelAndView("sausAlfabet", "alfabet", "alfabet")
+        return new ModelAndView("sausAlfabet", "alfabet", alfabet)
                 .addObject("sauzen", sausService.findByBeginNaam(letter).iterator());
     }
 }

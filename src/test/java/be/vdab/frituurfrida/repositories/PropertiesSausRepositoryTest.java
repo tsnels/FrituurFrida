@@ -1,5 +1,7 @@
 package be.vdab.frituurfrida.repositories;
 
+
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,30 +18,29 @@ import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
 @ExtendWith(SpringExtension.class)
 @PropertySource("application.properties")
-@Import(CSVSausRepository.class)
-
-class CSVSausRepositoryTest{
-
-    private final CSVSausRepository repository;
+@Import(PropertiesSausRepository.class)
+class PropertiesSausRepositoryTest {
+    private final PropertiesSausRepository repository;
     private final Path pad;
 
-    CSVSausRepositoryTest(CSVSausRepository repository, @Value("${CSVSausenPad}") Path pad) {
+
+    PropertiesSausRepositoryTest(PropertiesSausRepository repository, @Value("${propertiesSausenPad}") Path pad) {
         this.repository = repository;
         this.pad = pad;
     }
 
     @Test
-    void erZijnEvenveelSauzenAlsErRegelsZijnInHetCSVBestand() throws IOException {
+    void erZijnEvenveelSauzenAlsErRegelsZijnInHetBestand() throws IOException {
         assertThat(repository.findAll()).hasSameSizeAs(Files.readAllLines(pad));
     }
 
     @Test
-    void deEersteSausBevatDeDataVanDeEersteRegelInHetCSVBestand() throws IOException {
+    void deEersteSausBevatDeDataVanDeEersteRegelInHetBestand() throws IOException {
         var eersteRegel = Files.lines(pad).findFirst().get();
         var eersteSaus = repository.findAll().findFirst().get();
-        assertThat(eersteSaus.getId() + "," + eersteSaus.getNaam() + "," + Arrays.stream(eersteSaus.getIngredienten())
-                .collect(Collectors.joining(","))).isEqualTo(eersteRegel);
+        assertThat(eersteSaus.getId() + ":" + eersteSaus.getNaam() + "," + Arrays.stream(eersteSaus.getIngredienten()).collect(Collectors.joining(","))).isEqualTo(eersteRegel);
     }
 }
