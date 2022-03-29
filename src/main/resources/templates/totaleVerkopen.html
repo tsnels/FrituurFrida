@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments::head(title='Verkoop')">
+
+</head>
+
+<nav th:replace="fragments::menu"></nav>
+
+<body>
+
+<h1>Verkoop</h1>
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Naam</th>
+        <th>Verkocht</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="snack : ${alleVerkopen}" th:object="${snack}">
+        <td th:text="*{id}"></td>
+        <td th:text="*{naam}"></td>
+        <td th:text="*{aantal}"></td>
+
+        <!--                <td th:each="ingredient : *{ingredienten}" th:text="${ingredient}"></td>-->
+    </tr>
+    </tbody>
+</table>
+
+</body>
+
+</html>
