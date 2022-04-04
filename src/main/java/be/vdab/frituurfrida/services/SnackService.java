@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -24,8 +25,17 @@ public class SnackService {
         return snackRepository.findAll();
     }
 
+    public List<Snack> findByEersteLetter(String eersteLetter) {
+        return snackRepository.findByEersteLetter(eersteLetter);
+    }
+
     public List<TotaleVerkopen> sells() {
         return snackRepository.sells();
     }
+
+    public Optional<Snack> findById(long id) {
+        return snackRepository.findById(id);
+    }
+
 
 }
