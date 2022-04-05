@@ -2,6 +2,7 @@ package be.vdab.frituurfrida.repositories;
 
 import be.vdab.frituurfrida.dto.TotaleVerkopen;
 import be.vdab.frituurfrida.domain.Snack;
+import be.vdab.frituurfrida.exceptions.SnackNietGevondenException;
 import org.springframework.dao.IncorrectResultSizeDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -78,6 +79,41 @@ public class SnackRepository {
             return Optional.empty();
         }
     }
+
+//    public void update(long id, String naam, BigDecimal prijs) {
+//        var sql = """
+//                update snacks
+//                set naam = ?, prijs = ?
+//                where id = ?
+//                """;
+//        if (template.update(sql, naam, prijs,id) == 0) {
+//            throw new SnackNietGevondenException();
+//        }
+//    }
+
+    public void update(Snack snack) {
+        var sql = """ 
+                    update snacks
+                    set naam = ?, prijs = ?
+                    where id = ? 
+                    """;
+        if (template.update(sql, snack.getNaam(), snack.getPrijs(), snack.getId()) == 0){
+            throw new SnackNietGevondenException();
+        }
+    }
+
+    public void updateTest(Snack snack) {
+        var sql = """ 
+                    update snacks
+                    set naam = ?, prijs = ?
+                    where id = ? 
+                    """;
+        if (template.update(sql, snack.getNaam(), snack.getPrijs(), snack.getId()) == 0){
+            throw new SnackNietGevondenException();
+        }
+    }
+
+
 //
 //    public List<Snack> findById(int id) {
 //        var sql = """

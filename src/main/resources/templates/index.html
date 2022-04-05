@@ -15,5 +15,7 @@
         <div th:object="${adres}" th:text="|*{straat} *{huisNr} |"/>
          <div th:object="${adres}" th:text="|*{gemeente.postCode} *{gemeente.naam}|"/>
 
+        <div th:if="${param.snackNietGevonden}" class="fout">Snack <th:block th:text="${param.snackNietGevonden}"></th:block> niet gevonden</div>
+
     </body>
 </html>

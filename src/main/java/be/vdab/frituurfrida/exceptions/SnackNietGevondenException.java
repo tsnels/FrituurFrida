@@ -7,4 +7,8 @@ public class SnackNietGevondenException extends RuntimeException {
     public SnackNietGevondenException(String message) {
         super(message);
     }
+
+    public SnackNietGevondenException() {
+
+    }
 }

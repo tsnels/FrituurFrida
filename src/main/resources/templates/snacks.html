@@ -24,7 +24,7 @@
     <tbody>
     <tr th:each="snack : ${alleSnacks}" th:object="${snack}">
         <td th:text="*{id}"></td>
-        <td> <a th:text="*{naam}" th:href="@{/snacks/{id}(id=*{id})}"/></td>
+        <td> <a th:text="*{naam}" th:href="@{/snacks/{id}/wijzigen/form(id=*{id})}"/></td>
         <td th:text="*{prijs}"></td>
 
         <!--                <td th:each="ingredient : *{ingredienten}" th:text="${ingredient}"></td>-->

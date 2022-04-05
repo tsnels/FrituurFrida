@@ -37,5 +37,18 @@ public class SnackService {
         return snackRepository.findById(id);
     }
 
+//    public Object update(long id, String naam, BigDecimal prijs) {
+//        snackRepository.update(id, naam, prijs);
+//        return null;
+//    }
+
+    @Transactional(readOnly = false)
+    public void update(Snack snack) {
+        snackRepository.update(snack);
+    }
+
+    public void updateTest(Snack snack) {
+        snackRepository.updateTest(snack);
+    }
 
 }

@@ -3,18 +3,38 @@
 
 <head th:replace="fragments::head(title='snack')"></head>
 
-<nav th:replace="fragments::menu"></nav>
 
 <body>
 
 
-<h1 th:text="${snack.naam}"></h1>
+<!--<h1 th:text="${snack.naam}"></h1>-->
 
-<form th:object="${snac}" method="get" th:action="@{/snacks/id}">
-    <label>Naam:<span th:errors="*{naam}"></span><input th:field="*{naam}" autofocus  required type="text"></label>
-    <label>Prijs:<span th:errors="*{prijs}"></span><input th:field="*{prijs}"  required type="number"></label>
-    <button>zoeken</button>
+<!--<form th:object="${snackAanpassenForm}" method="post" th:action="@{/snacks/wijzigen}">-->
+<!--    <label>Naam:<input th:field="*{naam}" autofocus  required type="text"></label>-->
+<!--    <label>Prijs:<input th:field="*{prijs}"  required ></label>-->
+<!--    <button>Update</button>-->
+<!--</form>-->
+
+<nav th:replace="fragments::menu"></nav>
+
+
+<h1>Snack wijzigen</h1>
+
+<script th:src="@{/js/preventDoubleSubmit.js}" defer></script>
+
+<form th:if="${snack}" th:object="${snack}" method="post" th:action="@{/snacks/wijzigen}">
+    <label>Naam:<span th:errors="*{naam}"></span>
+        <input th:field="*{naam}" autofocus required>
+    </label>
+    <label>Prijs:<span th:errors="*{prijs}"></span>
+        <input th:field="*{prijs}" type="number" required min="0" step="0.01">
+    </label>
+
+    <input type="hidden" name="id" th:value="*{id}">
+    <button>Wijzigen</button>
 </form>
+
+<div class="fout" th:if="not ${snack}">Snack niet gevonden</div>
 
 </body>
 </html>
