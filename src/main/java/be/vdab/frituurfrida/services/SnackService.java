@@ -7,6 +7,7 @@ import be.vdab.frituurfrida.repositories.SnackRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,8 +48,8 @@ public class SnackService {
         snackRepository.update(snack);
     }
 
-    public void updateTest(Snack snack) {
-        snackRepository.updateTest(snack);
-    }
+//    public void updateTest(Snack snack) {
+//        snackRepository.updateTest(snack);
+//    }
 
 }

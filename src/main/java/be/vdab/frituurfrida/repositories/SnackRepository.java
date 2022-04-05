@@ -92,26 +92,26 @@ public class SnackRepository {
 //    }
 
     public void update(Snack snack) {
-        var sql = """ 
+        var sql = """
                     update snacks
                     set naam = ?, prijs = ?
-                    where id = ? 
+                    where id = ?
                     """;
         if (template.update(sql, snack.getNaam(), snack.getPrijs(), snack.getId()) == 0){
             throw new SnackNietGevondenException();
         }
     }
 
-    public void updateTest(Snack snack) {
-        var sql = """ 
-                    update snacks
-                    set naam = ?, prijs = ?
-                    where id = ? 
-                    """;
-        if (template.update(sql, snack.getNaam(), snack.getPrijs(), snack.getId()) == 0){
-            throw new SnackNietGevondenException();
-        }
-    }
+//    public void updateTest(Snack snack) {
+//        var sql = """
+//                    update snacks
+//                    set naam = ?, prijs = ?
+//                    where id = ?
+//                    """;
+//        if (template.update(sql, snack.getNaam(), snack.getPrijs(), snack.getId()) == 0){
+//            throw new SnackNietGevondenException();
+//        }
+//    }
 
 
 //

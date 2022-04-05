@@ -100,9 +100,9 @@ public class SnackController {
         }
 
 
-        @GetMapping("test")
-    public ModelAndView update(){
-//        snackService.updateTest(new Snack(1, "Fricandell", BigDecimal.TEN));
-        return new ModelAndView("test");
-        }
+//        @GetMapping("test")
+//    public ModelAndView update(){
+////        snackService.updateTest(new Snack(1, "Fricandell", BigDecimal.TEN));
+//        return new ModelAndView("test");
+//        }
     }
