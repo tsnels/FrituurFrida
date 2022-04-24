@@ -38,7 +38,7 @@ public class ZoekDeFriet implements Serializable {
     public void reset() {
         var random = new Random();
         var indexMetFriet = random.nextInt(AANTAL_DEUREN);
-        for (var index = 0; index!= AANTAL_DEUREN; index++) {
+        for (var index = 0; index != AANTAL_DEUREN; index++) {
             deuren[index]= new Deur(index, index == indexMetFriet);
             gevonden = false;
         }
